@@ -1,0 +1,30 @@
+<a href="/">Home</a>
+<a href="/todolist">View List</a>
+
+<h1>{{ viewTitle }}</h1>
+
+<form action="/todolist/create" method="POST">
+    <div class="">
+        <label>Enter List</label>
+        <input type="text" class="form-control" name="list" placeholder="Enter List">
+    </div>
+    <div class="text-danger">
+        {{ todolists.listError }}
+    </div>
+    <div class="">
+        <div class="">
+            <label>Time</label>
+            <input type="text" class="form-control" name="time" placeholder="hh.mm 24 hours format">
+        </div>
+        <div class="text-danger">
+            {{ todolists.timeError }}
+        </div>
+        <div class="">
+            <label>Date</label>
+            <input type="date" class="form-control" name="date">
+        </div>
+    </div>
+    <div class="">
+        <button type="submit" class="btn btn-info">Submit</button>
+    </div>
+</form>

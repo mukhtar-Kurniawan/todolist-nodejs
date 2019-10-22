@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Home</a>
+
+    <br>
+
+    <h1>{{ viewTitle }}</h1>
+
+    <a href="/todolist/create">Create</a>
+
+    <h2>Hal yang perlu dilakukan : {{ todolists.date }}</h2>
+    <div class="container">
+        <div class="column">
+            {{#each lists}}
+            <li class="column">List :{{ this.list }}</li>
+            <li class="column">Time :{{ this.time }}</li>
+            <li class="column">Date :{{ this.date }}</li>
+            <a href="/todolist/edit/{{ this._id }}">Edit</a>
+            <a href="/todolist/delete/{{ this._id }}" onclick="return confirm('Yakin ingin menghapus record ini?')">Delete</a>
+            <br><br>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

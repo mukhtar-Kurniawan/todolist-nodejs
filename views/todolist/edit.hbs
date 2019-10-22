@@ -1,0 +1,58 @@
+<a href="/">Home</a>
+<a href="/todolist">View List</a>
+
+<h1>{{ viewTitle }}</h1>
+
+<form action="/todolist/edit" method="POST">
+    <input type="hidden" name="_id" value="{{ todolists._id }}">
+    <div class="">
+        <label>Enter List</label>
+        <input type="text" class="form-control" name="list" placeholder="Enter List" value="{{ todolists.list }}">
+        <div class="text-danger">
+            {{ todolists.listError }}
+        </div>
+    </div>
+    <div class="">
+        <div class="">
+            <label>Time</label>
+            <input type="text" class="form-control" name="time" placeholder="hh.mm 24 hours format" value="{{ todolists.time }}">
+        </div>
+        <div class="text-danger">
+            {{ todolists.timeError }}
+        </div>
+        <div class="">
+            <label>Date</label>
+            <input type="date" class="form-control" name="date" id="dateDefault">
+        </div>
+    </div>
+    <div class="">
+        <button type="submit" class="btn btn-info">Submit</button>
+    </div>
+
+    <br>
+</form>
+
+<script>
+    function setInputDate(_id){
+    var _dat = document.querySelector(_id);
+    var str = "{{ todolists.date }}";
+    var hoy = new Date(str),
+        d = hoy.getDate(),
+        m = hoy.getMonth()+1, 
+        y = hoy.getFullYear(),
+        data;
+
+    if(d < 10){
+        d = "0"+d;
+    };
+    if(m < 10){
+        m = "0"+m;
+    };
+
+    data = y+"-"+m+"-"+d;
+    console.log(data);
+    _dat.value = data;
+};
+
+setInputDate("#dateDefault");
+</script>
